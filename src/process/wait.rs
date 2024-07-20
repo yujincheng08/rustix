@@ -266,7 +266,7 @@ pub enum WaitId<'a> {
     Pgid(Option<Pid>),
 
     /// Wait for a specific process file descriptor.
-    #[cfg(target_os = "linux")]
+    #[cfg(linux_kernel)]
     #[doc(alias = "P_PIDFD")]
     PidFd(BorrowedFd<'a>),
 
