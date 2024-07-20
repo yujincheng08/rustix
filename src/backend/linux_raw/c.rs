@@ -148,6 +148,8 @@ pub(crate) const IPPROTO_ETHERNET: u32 = linux_raw_sys::net::IPPROTO_ETHERNET as
 pub(crate) const IPPROTO_RAW: u32 = linux_raw_sys::net::IPPROTO_RAW as _;
 #[cfg(feature = "net")]
 pub(crate) const IPPROTO_MPTCP: u32 = linux_raw_sys::net::IPPROTO_MPTCP as _;
+#[cfg(feature = "net")]
+pub(crate) const AF_CAN: u32 = linux_raw_sys::net::AF_CAN as _;
 
 #[cfg(any(feature = "process", feature = "runtime"))]
 pub(crate) use linux_raw_sys::general::siginfo_t;
