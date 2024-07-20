@@ -63,6 +63,7 @@ fn test_abi() {
     const_assert_eq!(self::AT_HWCAP2, ::libc::AT_HWCAP2);
     const_assert_eq!(self::AT_EXECFN, ::libc::AT_EXECFN);
     const_assert_eq!(self::AT_SECURE, ::libc::AT_SECURE);
+    #[cfg(not(target_os = "android"))]
     const_assert_eq!(self::AT_SYSINFO_EHDR, ::libc::AT_SYSINFO_EHDR);
     #[cfg(feature = "runtime")]
     const_assert_eq!(self::AT_PHDR, ::libc::AT_PHDR);
@@ -164,6 +165,7 @@ pub(crate) fn exe_phdrs() -> (*const c::c_void, usize, usize) {
 
 /// `AT_SYSINFO_EHDR` isn't present on all platforms in all configurations, so
 /// if we don't see it, this function returns a null pointer.
+#[cfg(not(target_os = "android"))]
 #[inline]
 pub(in super::super) fn sysinfo_ehdr() -> *const Elf_Ehdr {
     #[cfg(not(feature = "runtime"))]
