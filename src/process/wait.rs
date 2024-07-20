@@ -272,7 +272,7 @@ pub enum WaitId<'a> {
 
     /// Eat the lifetime for non-Linux platforms.
     #[doc(hidden)]
-    #[cfg(not(target_os = "linux"))]
+    #[cfg(not(linux_kernel))]
     __EatLifetime(core::marker::PhantomData<&'a ()>),
 }
 
